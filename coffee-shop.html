@@ -3,193 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Hometown Healing Station - Bản Full Có Giọng Nói</title>
-    <link href="https://fonts.googleapis.com/css2?family=Pangolin&family=Nunito:wght@400;700;900&display=swap" rel="stylesheet">
+    <title>Hometown Healing Station - Setup Proposal</title>
+    <!-- Import phông chữ nét tròn, cute, viết tay -->
+    <link href="https://fonts.googleapis.com/css2?family=Pangolin&family=Nunito:wght@400;700&display=swap" rel="stylesheet">
     <style>
         :root {
-            --bg-board: #e8dcc4;
-            --wood-frame: #8b5a2b;
-            --paper-bg: #fffdf5;
-            --pastel-pink: #ffd1dc;
-            --pastel-yellow: #fff380;
-            --pastel-blue: #bfe6ff;
+            --bg-paper: #fcf9f2;
             --text-main: #4a3b32;
-            --line-color: #5c4d42;
+            --pencil-stroke: #5c4d42;
+            --pastel-pink: #ffd1dc;
+            --pastel-yellow: #fdfd96;
+            --pastel-green: #c1f0c1;
+            --pastel-blue: #bfe6ff;
+            --wood: #d4a373;
         }
 
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
 
         body {
             font-family: 'Nunito', sans-serif;
-            background-color: var(--bg-board);
+            background-color: var(--bg-paper);
             color: var(--text-main);
-            background-image: radial-gradient(circle, #d4c3a3 2px, transparent 2px);
-            background-size: 15px 15px;
+            line-height: 1.6;
             padding: 20px;
+            background-image: 
+                linear-gradient(rgba(92, 77, 66, 0.05) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(92, 77, 66, 0.05) 1px, transparent 1px);
+            background-size: 30px 30px;
         }
 
-        h1, h2, h3, .chibi-font { font-family: 'Pangolin', cursive; }
+        h1, h2, h3, .chibi-font {
+            font-family: 'Pangolin', cursive;
+        }
 
         .container {
-            max-width: 950px;
+            max-width: 900px;
             margin: 0 auto;
-            border: 12px solid var(--wood-frame);
-            border-radius: 15px;
-            background: rgba(255, 255, 255, 0.3);
-            padding: 20px;
-            box-shadow: 10px 10px 20px rgba(0,0,0,0.2);
         }
 
-        /* --- NÚT PHÁT ÂM THANH --- */
-        .audio-controls {
+        header {
             text-align: center;
-            margin-bottom: 30px;
+            margin-bottom: 40px;
+            padding-top: 20px;
+        }
+
+        header h1 {
+            font-size: 2.8rem;
+            color: #d2691e;
+            text-shadow: 2px 2px 0px var(--pastel-yellow);
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: #7f5539;
+            font-weight: bold;
+        }
+
+        .card {
             background: #fff;
-            padding: 15px;
-            border-radius: 20px;
-            border: 3px dashed var(--line-color);
-            box-shadow: 4px 4px 0px var(--pastel-pink);
-        }
-
-        .btn-play {
-            background-color: #ff6b6b;
-            color: white;
-            border: 3px solid var(--line-color);
-            padding: 15px 30px;
-            font-size: 1.5rem;
-            border-radius: 30px;
-            cursor: pointer;
-            font-family: 'Pangolin', cursive;
-            transition: all 0.2s;
-            box-shadow: 3px 5px 0px var(--line-color);
-            animation: pulse 2s infinite;
-        }
-
-        .btn-play:hover { transform: translateY(3px); box-shadow: 0px 2px 0px var(--line-color); }
-        .btn-play:active { background-color: #e63946; }
-
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
-        }
-
-        /* --- GIẤY NOTE CHIBI --- */
-        .paper-sheet {
-            background-color: var(--paper-bg);
-            border: 2px solid var(--line-color);
-            border-radius: 10px;
+            border: 3px solid var(--pencil-stroke);
+            border-radius: 20px 20px 20px 20px / 25px 15px 25px 15px;
             padding: 25px;
             margin-bottom: 30px;
-            box-shadow: 5px 5px 10px rgba(0,0,0,0.1);
+            box-shadow: 6px 6px 0px rgba(92, 77, 66, 0.15);
             position: relative;
         }
-        
-        .paper-sheet::before {
-            content: ''; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
-            width: 80px; height: 25px; background: rgba(255, 255, 255, 0.7); border: 1px solid #ccc; box-shadow: 1px 1px 3px rgba(0,0,0,0.2);
-        } /* Băng keo dán giấy */
 
-        .paper-sheet h2 {
+        .card h2 {
             font-size: 1.8rem;
+            border-bottom: 3px dashed var(--pastel-pink);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            display: inline-block;
+        }
+
+        .highlight-green { background-color: var(--pastel-green); padding: 2px 8px; border-radius: 8px; font-weight: bold;}
+        .highlight-yellow { background-color: var(--pastel-yellow); padding: 2px 8px; border-radius: 8px; font-weight: bold;}
+        .highlight-blue { background-color: var(--pastel-blue); padding: 2px 8px; border-radius: 8px; font-weight: bold;}
+
+        ul {
+            list-style-type: none;
+            padding-left: 10px;
+        }
+
+        ul li {
+            position: relative;
+            padding-left: 30px;
+            margin-bottom: 12px;
+        }
+
+        ul li::before {
+            content: '✿';
+            position: absolute;
+            left: 0;
             color: #d2691e;
-            border-bottom: 2px dashed #ffb6c1;
-            padding-bottom: 10px; margin-bottom: 15px;
+            font-size: 1.2rem;
         }
 
-        /* --- BẢNG CHI TIẾT --- */
+        /* Styles cho Bảng */
         table {
-            width: 100%; border-collapse: collapse; margin-top: 15px;
-            border: 2px solid var(--line-color); background: #fff;
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            border: 3px solid var(--pencil-stroke);
+            border-radius: 15px;
+            overflow: hidden;
+            margin-top: 15px;
         }
-        th, td { border: 1px solid var(--line-color); padding: 12px; text-align: left; }
-        th { background-color: var(--pastel-yellow); font-family: 'Pangolin', cursive; font-size: 1.2rem; }
-        tr:nth-child(even) { background-color: #fdfaf6; }
 
-        .highlight { font-weight: bold; color: #e63946; }
+        th, td {
+            padding: 12px 15px;
+            border-bottom: 2px solid var(--pencil-stroke);
+            border-right: 2px solid var(--pencil-stroke);
+        }
+
+        th:last-child, td:last-child {
+            border-right: none;
+        }
+
+        tr:last-child td {
+            border-bottom: none;
+        }
+
+        th {
+            background-color: var(--pastel-yellow);
+            font-family: 'Pangolin', cursive;
+            font-size: 1.2rem;
+            text-align: left;
+        }
+
+        td {
+            background-color: #fffaf0;
+        }
+
+        /* SVG Drawings */
+        .svg-container {
+            text-align: center;
+            margin: 20px 0;
+            background: #fffdf5;
+            border: 2px dashed var(--pencil-stroke);
+            border-radius: 20px;
+            padding: 20px;
+        }
+
+        .line {
+            fill: none;
+            stroke: var(--pencil-stroke);
+            stroke-width: 4;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
         
-        ul { padding-left: 20px; line-height: 1.8; }
-        ul li::marker { content: '👉 '; }
+        .thin-line {
+            fill: none;
+            stroke: var(--pencil-stroke);
+            stroke-width: 2;
+            stroke-linecap: round;
+        }
 
     </style>
 </head>
 <body>
 
 <div class="container">
-    
-    <!-- KHU VỰC PHÁT ÂM THANH -->
-    <div class="audio-controls">
-        <h2 class="chibi-font" style="color: #ff7f50; margin-bottom: 10px;">Bật loa lên Boss ơi! Trợ lý ảo AI sẽ đọc cho bạn nghe 🎧</h2>
-        <button class="btn-play" id="playBtn" onclick="speakText()">🔊 BẤM VÀO ĐÂY ĐỂ NGHE TÔI THUYẾT TRÌNH</button>
-        <p style="margin-top: 10px; font-style: italic; color: #666;">(Lưu ý: Bật tiếng trình duyệt và máy tính nhé. Nếu đang đọc muốn dừng thì bấm F5 tải lại trang).</p>
-    </div>
+    <header>
+        <h1>Trạm Cà Phê "Về Quê Chữa Lành" 🌻</h1>
+        <div class="subtitle">F&B Proposal - Vốn < 30 Củ | Vibe Chibi Cute | Sân Nhà Takeaway</div>
+    </header>
 
-    <h1 style="text-align: center; color: #fff; text-shadow: 2px 2px 0 var(--line-color); font-size: 2.5rem; margin-bottom: 20px;">📜 BẢN KẾ HOẠCH FULL CHI TIẾT</h1>
-
-    <!-- 1. INSIGHT & CONCEPT -->
-    <div class="paper-sheet">
-        <h2>🎯 1. Phân tích Khách hàng & Concept Quầy</h2>
+    <!-- PHẦN 1: INSIGHT -->
+    <div class="card">
+        <h2>🎯 1. Phân Tích Insight "Hệ Sinh Thái Làng Quê"</h2>
+        <p>Để quán lúc nào cũng đông, chúng ta không bán "nước", chúng ta bán <span class="highlight-yellow">"Không gian mộc mạc"</span> và <span class="highlight-blue">"Hương vị thành phố"</span>. Tệp khách của bạn chia làm 3 nhóm chính:</p>
         <ul>
-            <li><strong>Giới trẻ / SG dạt về quê:</strong> Thích không gian Aesthetic, đồ uống đẹp để check-in (Matcha dâu/xoài). Cần ghế dù ngồi chill nhìn đường phố.</li>
-            <li><strong>Học sinh cấp 3:</strong> Ăn vặt nhiều (Bánh mì chấm sữa, sandwich bơ trứng), mê đồ uống ngọt (Sữa tươi, nước cam).</li>
-            <li><strong>Hàng xóm / Người đi làm:</strong> Mua takeaway nhanh, chuộng cafe Phin đậm đà (Cốt Highlands).</li>
+            <li><strong>Các bạn trẻ từ Sài Gòn/Phố về quê chơi:</strong> Họ thèm một góc có gu, không cần máy lạnh nhưng phải "Aesthetic", có đồ uống chuẩn trend (Matcha hạt, Cafe trái cây) để check-in story IG khoe lối sống chậm (Slow living).</li>
+            <li><strong>Học sinh cấp 3 trường huyện/xã:</strong> Đây là lực lượng "tài trợ" chính buổi xế chiều. Các bé thích vị ngọt béo, màu sắc đẹp (Matcha dâu, Matcha xoài), giá hssv và có đồ ăn vặt (bánh ngọt, bánh mì chấm sữa).</li>
+            <li><strong>Hàng xóm / Cô chú lớn tuổi:</strong> Buổi sáng sớm đi thể dục hoặc đi chợ ngang qua. Cần một ly Cafe Phin Highlands đậm, đắng, thơm, mua nhanh vọt lẹ.</li>
         </ul>
-        <p style="margin-top: 10px;"><strong>Concept:</strong> Xe gỗ lề đường/sân nhà. Một bên đặt thùng đá 60L (để ướp sữa, trái cây và múc đá), một bên đặt tủ kính nhỏ trong suốt trưng bày bánh chuối, cookie. Bố trí 5-6 ghế dù cắm trại phía trước mặt xe.</p>
     </div>
 
-    <!-- 2. BẢNG MENU VÀ CÔNG THỨC CHI TIẾT -->
-    <div class="paper-sheet">
-        <h2>🍵 2. Bảng Menu & Công Thức Chuẩn (Ly PET 500ml)</h2>
+    <!-- PHẦN 2: CONCEPT & BỐ TRÍ -->
+    <div class="card">
+        <h2>🎨 2. Concept & Sơ Đồ Quầy (Chibi Style)</h2>
+        <p><strong>Concept:</strong> "Góc nhỏ trước hiên nhà". Một chiếc xe gỗ mộc mạc, bên trên có tủ kính nhỏ trưng bày bánh nhìn cực kỳ "Ghibli". Vài chiếc ghế dù xếp dưới bóng cây. Không dùng điện tủ lạnh, mọi thứ ướp lạnh tự nhiên bằng thùng đá to.</p>
+        
+        <div class="svg-container">
+            <!-- Bản vẽ xe gỗ chibi cute -->
+            <svg viewBox="0 0 500 350" width="100%" height="300">
+                <!-- Tô màu sáp (Dịch lệch 1 chút tạo độ mộc) -->
+                <rect x="155" y="155" width="200" height="130" fill="var(--wood)" rx="10" /> <!-- Thân xe -->
+                <rect x="130" y="145" width="250" height="15" fill="#e6ccb2" rx="5" /> <!-- Mặt quầy -->
+                <rect x="235" y="85" width="110" height="60" fill="var(--pastel-blue)" opacity="0.6" rx="5" /> <!-- Tủ kính bánh -->
+                <circle cx="210" cy="85" r="25" fill="var(--pastel-pink)" /> <!-- Ly cafe chibi -->
+                <rect x="65" y="125" width="50" height="70" fill="var(--pastel-yellow)" rx="5" /> <!-- Bảng Menu -->
+
+                <!-- Vẽ nét bút chì (Stroke) -->
+                <!-- Bánh xe -->
+                <circle cx="190" cy="290" r="25" class="line" fill="#fff" />
+                <circle cx="190" cy="290" r="5" class="line" fill="var(--pencil-stroke)" />
+                <circle cx="310" cy="290" r="25" class="line" fill="#fff" />
+                <circle cx="310" cy="290" r="5" class="line" fill="var(--pencil-stroke)" />
+                
+                <!-- Thân xe -->
+                <rect x="150" y="150" width="200" height="130" class="line" rx="10" />
+                <line x1="150" y1="180" x2="350" y2="180" class="thin-line" />
+                <line x1="150" y1="210" x2="350" y2="210" class="thin-line" />
+                <line x1="150" y1="240" x2="350" y2="240" class="thin-line" />
+                <!-- Chibi Face trên xe -->
+                <path d="M 220 200 Q 250 220 280 200" class="line" /> <!-- Miệng cười -->
+                <circle cx="220" cy="190" r="4" fill="var(--pencil-stroke)" /> <!-- Mắt -->
+                <circle cx="280" cy="190" r="4" fill="var(--pencil-stroke)" /> <!-- Mắt -->
+                <circle cx="210" cy="195" r="5" fill="var(--pastel-pink)" opacity="0.8" /> <!-- Má hồng -->
+                <circle cx="290" cy="195" r="5" fill="var(--pastel-pink)" opacity="0.8" /> <!-- Má hồng -->
+
+                <!-- Mặt quầy -->
+                <rect x="120" y="140" width="260" height="15" class="line" rx="5" />
+
+                <!-- Tủ kính đựng bánh (Pastry Cabinet) -->
+                <rect x="230" y="80" width="110" height="60" class="line" rx="5" />
+                <line x1="230" y1="110" x2="340" y2="110" class="thin-line" /> <!-- Kệ tủ -->
+                <path d="M 240 100 Q 250 90 260 100" class="line" fill="#f4a261" /> <!-- Bánh sừng bò/Cookie -->
+                <path d="M 270 100 Q 280 90 290 100" class="line" fill="#f4a261" /> 
+                <path d="M 240 130 Q 250 120 260 130" class="line" fill="#e9c46a" /> <!-- Bánh chuối -->
+                <text x="245" y="70" class="chibi-font" font-size="14" fill="var(--text-main)">Tủ Bánh Yummy</text>
+
+                <!-- Ly Cafe Chibi trên quầy -->
+                <path d="M 190 60 L 230 60 L 220 120 L 200 120 Z" class="line" fill="#fff" />
+                <rect x="195" y="120" width="30" height="20" class="line" /> <!-- Thùng đá nhỏ / Cân -->
+                <path d="M 205 90 Q 210 95 215 90" class="thin-line" /> <!-- Cười -->
+                <circle cx="202" cy="85" r="2" fill="var(--pencil-stroke)" />
+                <circle cx="218" cy="85" r="2" fill="var(--pencil-stroke)" />
+                <path d="M 210 40 L 210 60" class="line" /> <!-- Ống hút -->
+                <text x="175" y="50" class="chibi-font" font-size="12" fill="var(--text-main)">Matcha!</text>
+
+                <!-- Bảng Menu Standee -->
+                <rect x="60" y="120" width="50" height="70" class="line" rx="5" />
+                <line x1="75" y1="190" x2="65" y2="240" class="line" /> <!-- Chân -->
+                <line x1="95" y1="190" x2="105" y2="240" class="line" /> <!-- Chân -->
+                <text x="65" y="145" class="chibi-font" font-size="14" fill="var(--text-main)">MENU</text>
+                <line x1="65" y1="155" x2="105" y2="155" class="thin-line" />
+                <line x1="65" y1="165" x2="105" y2="165" class="thin-line" />
+                <line x1="65" y1="175" x2="95" y2="175" class="thin-line" />
+
+                <!-- Ghế dù / Ghế camping (Phía trước) -->
+                <path d="M 400 230 L 440 230 L 430 280 L 390 280 Z" class="line" fill="var(--pastel-green)" />
+                <line x1="400" y1="230" x2="380" y2="280" class="line" />
+                <line x1="440" y1="230" x2="450" y2="280" class="line" />
+                <text x="400" y="300" class="chibi-font" font-size="14" fill="var(--text-main)">Ghế Dù</text>
+            </svg>
+        </div>
+        <p><strong>💡 Mẹo vận hành:</strong> 
+        Mua 1 chiếc thùng đá Duy Tân loại 60L. Một nửa đổ đá viên uống cafe, nửa còn lại lót bạt nylon để dìm các chai sữa tươi, chai cốt chanh, mứt trái cây xuống ướp lạnh. Vừa tiết kiệm điện tủ lạnh, vừa hợp vibe "dã chiến".</p>
+    </div>
+
+    <!-- PHẦN 3: BẢNG MENU & CÔNG THỨC -->
+    <div class="card">
+        <h2>🍵 3. Menu Định Lượng (Cho Ly PET 500ml)</h2>
+        <p>Công thức được thiết kế để <span class="highlight-green">ra món dưới 2 phút</span>. Cốt cà phê Phin Highlands ủ sẵn 1 lít từ sáng. Thể tích ly 500ml (khoảng 180ml nước cốt + đá đầy ly).</p>
+
         <table>
             <tr>
                 <th>Tên Món</th>
-                <th>Công Thức Định Lượng (Ra món < 2 phút)</th>
+                <th>Công thức & Cách pha chi tiết</th>
                 <th>Giá Bán</th>
             </tr>
+            <!-- Cafe Truyền Thống -->
             <tr>
                 <td><strong>Cà Phê Đen Đá</strong></td>
-                <td>45ml cốt Phin Highlands + 20ml đường nước. Lắc tung bọt bằng bình Shaker. Đổ ra ly đầy đá.</td>
-                <td>18.000đ</td>
+                <td>45ml cốt Phin Highlands + 20ml đường nước. Đổ vào bình lắc (shaker) lắc mạnh tạo bọt. Đổ ra ly đầy đá.</td>
+                <td>18k - 20k</td>
             </tr>
             <tr>
                 <td><strong>Cà Phê Sữa Đá</strong></td>
-                <td>40ml cốt Phin + 30ml sữa đặc. Khuấy đều, cho đá đầy ly.</td>
-                <td>20.000đ</td>
+                <td>40ml cốt Phin + 30ml sữa đặc. Khuấy đều, cho đá vào đầy ly. Cho thêm 5ml cốt cafe lên mặt đá cho đẹp.</td>
+                <td>20k - 22k</td>
             </tr>
             <tr>
-                <td><strong>Cà Phê Sữa Tươi</strong></td>
-                <td>Đáy ly: 20ml sữa đặc + 80ml sữa tươi ko đường + Đá đầy. Rót 40ml cốt cafe lên trên cùng tạo phân tầng.</td>
-                <td>25.000đ</td>
+                <td><strong>Cafe Sữa Tươi</strong></td>
+                <td>Đáy ly: 20ml sữa đặc + 80ml sữa tươi ko đường. Cho đá đầy ly. Lắc 40ml cốt cafe rót từ từ lên trên cùng (tạo phân tầng 2 màu).</td>
+                <td>22k - 25k</td>
+            </tr>
+            
+            <!-- Cafe Trái Cây (Trend) -->
+            <tr>
+                <td><strong>Cà Phê Nước Cam</strong></td>
+                <td>120ml nước cam vắt tươi + 25ml đường nước (khuấy tan). Cho đá đầy ly. Rót nhẹ 30ml cốt cafe lên trên cùng. Cắm lát cam trang trí.</td>
+                <td>25k - 30k</td>
             </tr>
             <tr>
-                <td><strong>Cà Phê Cam</strong></td>
-                <td>120ml cốt cam ép tươi + 25ml đường nước + Đá đầy. Rót 30ml cốt cafe lên mặt. Decor lát cam.</td>
-                <td>30.000đ</td>
+                <td><strong>Cafe Kem Chanh</strong></td>
+                <td>Làm cốt chanh (vắt sẵn để chai): 100ml nước lọc + 15ml nước cốt chanh + 25ml đường. Cho đá vào. Lắc tung bọt 40ml cốt cafe rồi đổ lên trên lớp nước chanh.</td>
+                <td>25k</td>
             </tr>
-            <tr>
-                <td><strong>Cà Phê Kem Chanh</strong></td>
-                <td>Làm cốt chanh (100ml nước + 15ml cốt chanh + 25ml đường). Thêm đá. Lắc 40ml cafe sủi bọt rót lên.</td>
-                <td>25.000đ</td>
-            </tr>
+
+            <!-- Hệ Matcha (Trend Gen Z) -->
             <tr>
                 <td><strong>Matcha Latte</strong></td>
-                <td>Đánh tan 5g bột matcha với 30ml nước sôi. Đáy ly: 120ml sữa tươi + 20ml đường nước + Đá. Rót Matcha lên.</td>
-                <td>30.000đ</td>
+                <td>5g bột matcha + 30ml nước sôi -> Dùng chổi Chasen đánh tan bọt. Đáy ly: 120ml sữa tươi + 20ml đường nước + Đá đầy. Rót Matcha đã đánh lên trên (tạo 2 tầng xanh trắng).</td>
+                <td>25k - 30k</td>
             </tr>
             <tr>
-                <td><strong>Matcha Xoài/Dâu</strong></td>
-                <td>Đáy ly: 40g mứt dầm (xoài/dâu). Thêm 100ml sữa tươi + Đá đầy. Rót lớp Matcha (5g) lên trên (Ly 3 tầng màu).</td>
-                <td>35.000đ</td>
+                <td><strong>Matcha Xoài 🥭</strong></td>
+                <td>Đáy ly: 40g mứt xoài (loại sinh tố Berrino/Osterberg dầm ra). Đổ 100ml sữa tươi. Cho đá đầy ly. Rót 5g bột matcha (đã đánh tan với 30ml nc sôi) lên trên cùng.</td>
+                <td>30k - 35k</td>
+            </tr>
+            <tr>
+                <td><strong>Matcha Dâu 🍓</strong></td>
+                <td>Tương tự Matcha Xoài: 40g mứt dâu dầm đáy ly + 100ml sữa tươi + Đá + Lớp Matcha trên cùng. Phân 3 tầng: Đỏ - Trắng - Xanh cực "slay" để quay tóp tóp.</td>
+                <td>30k - 35k</td>
             </tr>
             <tr>
                 <td><strong>Nước Cam Ép</strong></td>
-                <td>150ml cốt cam tươi + 20-25ml đường nước (tùy cam chua/ngọt). Đá đầy.</td>
-                <td>25.000đ</td>
+                <td>150ml cốt cam vắt + 20ml đường nước (tùy độ chua của cam). Cho đá đầy ly. Lành tính cho trẻ em/bà bầu.</td>
+                <td>20k - 25k</td>
             </tr>
         </table>
 
-        <h3 style="margin-top: 20px; color: #d2691e;">🥐 Menu Bánh Ăn Kèm (Trưng bày tủ kính)</h3>
+        <h3 style="margin-top: 25px;">🥐 Bánh Ăn Kèm (Pastry Upsell)</h3>
+        <p>Bánh nhập từ các lò địa phương hoặc nhà tự làm, bỏ hộp nhựa nắp trong để vào Tủ Kính (Chống ruồi muỗi, nhìn sạch sẽ):</p>
         <ul>
-            <li><strong>Bánh chuối / Cookie:</strong> Nhập từ lò 5k -> Bán 15k. Ăn kèm cafe mười điểm.</li>
-            <li><strong>Bánh mì chấm sữa:</strong> 1 ổ giòn cắt khúc + hũ nhựa 30ml sữa đặc -> Bán Combo ăn sáng 15k.</li>
-            <li><strong>Sandwich bơ trứng:</strong> 2 lát sanwich, chà bông, trứng ốp la, bơ lạt -> Bán 20
+            <li><strong>Bánh chuối nướng / Bánh Cookies:</strong> Nhập 4k - 6k -> Bán 12k - 15k. Ăn kèm cafe đen cực dính.</li>
+            <li><strong>Bánh mì chấm sữa đặc:</strong> 1 ổ bánh mì nóng giòn cắt khúc (3k) + 1 hũ nhựa nhỏ 30ml sữa đặc (2k). Bán combo ăn sáng 15k.</li>
+            <li><strong>Sandwich Bơ Trứng:</strong> 2 lát sanwich kẹp bơ lạt, trứng ốp la, chà bông, sốt mayo. Cost 8k -> Bán 20k. Vua ăn sáng cho học sinh.</li>
+        </ul>
+    </div>
+
+    <!-- PHẦN 4: VẬT TƯ -->
+    <div class="card">
+        <h2>🛠️ 4. Danh Sách Đồ Nghề (Starter Kit)</h2>
+        <ul>
+            <li><strong>Cơ sở vật chất:</strong> Xe gỗ (đóng xưởng mộc ở quê mộc mạc), Tủ kính mini (3 tầng để bánh), Thùng đá nhựa (Duy Tân 60L), 5-6 bộ ghế dù xếp (loại du lịch), Bảng đen viết phấn làm Menu.</li>
+            <li><strong>Dụng cụ pha chế Cafe:</strong> 3 bộ Phin nhôm loại lớn (pha 1 lạng/lần), Bình xịt đường nước (pump), Ca đong (Jigger), Bình lắc Shaker nhựa.</li>
+            <li><strong>Dụng cụ hệ Trái cây & Matcha:</strong> Đồ vắt cam inox/nhựa, Chổi chasen + bát sứ đánh matcha, Cân tiểu ly điện tử (cực kỳ quan trọng để chuẩn vị).</li>
+            <li><strong>Bao bì:</strong> Ly PET 500ml đáy bằng (chịu lực tốt), Nắp cầu/Nắp bằng, Ống hút trân châu, Túi chữ T, Decal logo dán ly (tự thiết kế Canva đi in 500đ/tem).</li>
+        </ul>
+    </div>
+
+    <!-- PHẦN 5: BÀI TOÁN TÀI CHÍNH -->
+    <div class="card">
+        <h2>💸 5. Bài Toán Tài Chính (< 30 Triệu)</h2>
+        
+        <h3>A. Chi Phí Đầu Tư Ban Đầu (CAPEX)</h3>
+        <table>
+            <tr>
+                <th>Hạng mục</th>
+                <th>Dự toán (VND)</th>
+            </tr>
+            <tr><td>Xe gỗ + Tủ kính mini + Bảng phấn Menu</td><td>~ 5.000.000</td></tr>
+            <tr><td>Thùng đá lớn + Dụng cụ pha chế (Cân, chasen, phin, ca, vắt cam)</td><td>~ 1.500.000</td></tr>
+            <tr><td>Bàn ghế (5 ghế dù + 2 bàn xếp mini)</td><td>~ 1.000.000</td></tr>
+            <tr><td>Bao bì (Ly, nắp, túi, in tem logo) - Lô đầu tiên</td><td>~ 1.500.000</td></tr>
+            <tr><td>Nguyên liệu (Cafe, Matcha, Mứt, Sữa, Đường) - Lô đầu tiên</td><td>~ 3.000.000</td></tr>
+            <tr><td>Quỹ dự phòng & Trang trí lặt vặt</td><td>~ 3.000.000</td></tr>
+            <tr><td><strong>Tổng cộng</strong></td><td><strong style="color:red;">~ 15.000.000 VNĐ</strong></td></tr>
+        </table>
+        <p style="margin-top: 10px;"><em>=> Thực tế, chưa tới 20 củ là bạn đã set up xong toàn bộ với chất lượng xịn xò.</em></p>
+
+        <h3>B. Giá Vốn (Food Cost) & Lợi Nhuận Gộp</h3>
+        <p>Lấy ví dụ món <strong>Cà Phê Sữa Đá (Bán 20.000đ ở quê)</strong>:</p>
+        <ul>
+            <li>Cốt cafe Highlands 40ml: ~ 4.000đ</li>
+            <li>Sữa đặc 30ml: ~ 1.500đ</li>
+            <li>Ly PET + Nắp + Tem + Túi: ~ 1.500đ</li>
+            <li>Đá lạnh + Hao hụt: ~ 500đ</li>
+            <li><strong>Tổng Cost: 7.500đ</strong> -> Lợi nhuận gộp: <span class="highlight-blue">12.500đ / ly (Biên lợi nhuận 62.5% - Rất an toàn)</span>.</li>
+        </ul>
+
+        <h3>C. Mục tiêu kinh doanh</h3>
+        <p>Mặt bằng nhà = 0đ. Tự đứng bán = 0đ tiền lương. Điện nước xài ké nhà mẹ = Không đáng kể.<br>
+        Mỗi ngày bạn chỉ cần bán <strong>30 ly nước</strong> (lời 12k/ly = 360k) + <strong>10 phần bánh</strong> (lời 8k/phần = 80k) => <strong>Lãi ròng ~440k/ngày (Hơn 13 triệu/tháng).</strong></p>
+        <p>Với mức này, chỉ mất khoảng <strong>hơn 1 tháng</strong> là bạn đã thu hồi lại toàn bộ số vốn 15 củ bỏ ra ban đầu! Cuộc sống "chữa lành" không hề áp lực.</p>
+    </div>
+
+    <div style="text-align: center; margin-top: 40px; padding-bottom: 30px;">
+        <h2 style="color: #d2691e; border: none;">Chúc Boss Khai Trương Hồng Phát! (๑˃̵ᴗ˂̵)و</h2>
+        <p>Set up tinh gọn, trang trí dễ thương, chất lượng Sài Gòn. Bạn chắc chắn sẽ "slay" cả xóm!</p>
+    </div>
+
+</div>
+
+</body>
+</html>
